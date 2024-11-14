@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Recommendation System</title>
+
+    <!-- Link to Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Link to Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center">Movie Recommendation System</h1>
+
+    <!-- Form to accept movie title, similarity level, and genre filter -->
+    <form method="POST" action="/" class="card p-3 mt-4">
+        <div class="form-group">
+            <input type="text" name="movie_title" placeholder="Enter a movie title" required class="form-control">
+        </div>
+
+        <!-- Similarity level dropdown -->
+        <div class="form-group">
+            <select name="similarity_level" class="form-control">
+                <option value="low">Low Similarity</option>
+                <option value="medium" selected>Medium Similarity</option>
+                <option value="high">High Similarity</option>
+            </select>
+        </div>
+
+        <!-- Genre filter dropdown -->
+        <div class="form-group">
+            <select name="genre_filter" class="form-control">
+                <option value="">All Genres</option>
+                <option value="Action">Action</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+                <option value="Thriller">Thriller</option>
+                <!-- Add more genres as needed based on your dataset -->
+            </select>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block">Get Recommendations</button>
+    </form>
+
+    <!-- Display Recommendations -->
+    <h2 class="mt-5">Recommendations:</h2>
+    <ul class="list-group">
+        {% for movie in recommendations %}
+            <li class="list-group-item">
+                <strong>{{ movie.title }}</strong><br>
+                <em>Release Date:</em> {{ movie.release_date }}<br>
+                <em>Genre:</em> {{ movie.genre }}<br>
+                <em>Rating:</em> {{ movie.rating }}<br>
+
+                <!-- Display additional movie details fetched from IMDb API if available -->
+                {% if movie.imdb_rating %}
+                    <em>IMDb Rating:</em> {{ movie.imdb_rating }}<br>
+                {% endif %}
+                {% if movie.cast %}
+                    <em>Cast:</em> {{ movie.cast }}<br>
+                {% endif %}
+                {% if movie.plot %}
+                    <em>Plot:</em> {{ movie.plot }}<br>
+                {% endif %}
+                {% if movie.director %}
+                    <em>Director:</em> {{ movie.director }}<br>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Display Recent Searches -->  
+    <h2 class="mt-5">Recent Searches:</h2>
+    <div class="recent-searches card p-3">
+        <ul class="list-group">
+            {% for search in search_history %}
+                <li class="list-group-item">
+                    <strong>{{ search[0] }}</strong> - Similarity: {{ search[1] }}, Genre: {{ search[2] }}<br>
+                    <em>Recommendations:</em> {{ search[3] }}<br>
+                    <small>Timestamp: {{ search[4] }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+        
+    <!-- Pagination Controls -->
+    <div class="d-flex justify-content-between mt-3">
+        {% if page > 1 %}
+            <a href="{{ url_for('index', page=page-1) }}" class="btn btn-secondary">Previous</a>
+        {% else %}
+            <span></span> <!-- Placeholder to keep buttons aligned -->
+        {% endif %}
+                
+        {% if has_next %}
+            <a href="{{ url_for('index', page=page+1) }}" class="btn btn-secondary ml-auto">Next</a>
+        {% endif %}     
+    </div>
+        
+</div>   
+
+<!-- Bootstrap JS (optional, for Bootstrap features like modals if needed) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+        
+</body>
+</html>
+
+    
+

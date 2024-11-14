@@ -1,0 +1,68 @@
+/* Set background image and default text color */
+body {
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white; /* Set default text color to white */
+    font-family: Arial, sans-serif; /* Optional: Use a clean, readable font */
+}
+
+/* Style for the main container to make the form stand out */
+.container {
+    color: white; /* Ensure text within the container is also white */
+}
+
+/* Input fields (movie title, dropdowns) */
+input[type="text"], select {
+    background-color: white !important; /* White background for input fields */
+    color: black !important;            /* Black text color for contrast */
+    border: 1px solid #ddd;             /* Light border around input fields */
+    padding: 8px;                       /* Add padding for better appearance */
+}
+
+/* Input field focus style */
+input[type="text"]:focus {
+    background-color: white !important; /* Keep background white on focus */
+    color: black !important;            /* Keep text color black on focus */
+    outline: none;                      /* Remove default outline for a cleaner look */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); /* Optional shadow on focus */
+}
+
+/* Style for the "Get Recommendations" button */
+button {
+    background-color: #8B0000 !important; /* Dark red background with !important to override Bootstrap */
+    color: white !important;              /* White text with !important */
+    border: none !important;
+    font-weight: bold;
+    padding: 8px 16px;                    /* Padding to make the button larger */
+    border-radius: 5px;                   /* Rounded corners for a softer look */
+    cursor: pointer;                      /* Change cursor to pointer on hover */
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #a00000 !important; /* Slightly lighter red on hover */
+}
+
+/* Style for list items in recommendations and recent searches */
+.list-group-item {
+    background-color: white; /* White background for readability */
+    color: black;            /* Black text color for visibility */
+    border: 1px solid #ddd;  /* Light border to define the list item */
+    border-radius: 5px;      /* Rounded corners for a nicer look */
+    margin-bottom: 8px;      /* Spacing between items */
+    padding: 10px;
+}
+
+/* Optional: Style for "No recommendations found" message */
+.list-group-item em {
+    color: grey; /* Grey color for emphasis */
+}
+
+/* Style for the main headings */
+h1, h2 {
+    color: white; /* White color for headings */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Subtle shadow for readability */
+}
+
