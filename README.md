@@ -74,6 +74,9 @@ This project is a Flask-based web application that delivers personalized movie r
 
 The recommendation model was trained using data from [Chitranjan Upadhyay's Movie Recommendation System Dataset](https://github.com/ChitranjanUpadhayay/ML_Projects/tree/main/Datasets/Movies%20Recommendation%20System), providing the foundational movie data for generating suggestions.
 
+### Download `.pkl` File:
+To download the `.pkl` file used for movie recommendations, you can access it [here](https://drive.google.com/file/d/1MDo3_QccM1NA2aXMyxInhlnad97K3SEf/view?usp=drive_link).
+
 ## Acknowledgments
 
 - Dataset: [Chitranjan Upadhyay’s Movie Recommendation System Dataset](https://github.com/ChitranjanUpadhayay/ML_Projects/tree/main/Datasets/Movies%20Recommendation%20System).
